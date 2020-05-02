@@ -1,0 +1,25 @@
+server:
+  port: 8082
+keycloak:
+  realm: demo
+  auth-server-url: http://127.0.0.1:8080/auth
+  resource: spring-boot-demo
+  ssl-required: external
+  credentials:
+    secret: 2d2ab498-7af9-48c0-89a3-5eec929e462b
+  bearer-only: true
+  use-resource-role-mappings: false
+  cors: true
+  security-constraints:
+    - authRoles:
+        - ROLE_CUSTOMER
+      securityCollections:
+        - name: customer
+          patterns:
+            - /customer
+    - authRoles:
+        - ROLE_ADMIN
+      securityCollections:
+        - name: admin
+          patterns:
+            - /admin
